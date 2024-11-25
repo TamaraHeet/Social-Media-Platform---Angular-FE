@@ -1,0 +1,73 @@
+<section class="vh-100" style="position: relative; overflow: hidden">
+  <!-- Video background -->
+  <video autoplay muted loop id="background-video" class="background-video">
+    <source src="assets/others.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <section class="vh-100">
+    <div class="container-fluid h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 form-container">
+          <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+            <div
+              class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4"
+            >
+              <p class="login-heading mb-0 me-3">Login</p>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input
+                id="usernameOrEmail"
+                formControlName="usernameOrEmail"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Enter your username or email"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('usernameOrEmail')?.invalid &&
+                  loginForm.get('usernameOrEmail')?.touched
+                "
+                class="error-message"
+              >
+                A valid email or username is required.
+              </div>
+            </div>
+
+            <div class="form-outline mb-3">
+              <input
+                id="password"
+                formControlName="password"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Enter your password"
+              />
+              <label class="form-label" for="password">Password</label>
+              <div
+                *ngIf="
+                  loginForm.get('password')?.invalid &&
+                  loginForm.get('password')?.touched
+                "
+                class="error-message"
+              >
+                Password is required.
+              </div>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button
+                type="submit"
+                [disabled]="loginForm.invalid"
+                class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

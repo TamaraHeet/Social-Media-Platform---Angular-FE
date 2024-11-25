@@ -1,0 +1,305 @@
+<section class="vh-100" style="position: relative; overflow: hidden">
+  <!-- Video background -->
+  <video autoplay muted loop id="background-video" class="background-video">
+    <source src="assets/others.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Sign Up
+                </p>
+
+                <form
+                  [formGroup]="signUpForm"
+                  (ngSubmit)="onSubmit()"
+                  class="mx-1 mx-md-4"
+                >
+                  <!-- Username -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="userName"
+                        formControlName="userName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your username"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('userName')?.touched &&
+                        signUpForm.get('userName')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="signUpForm.get('userName')?.hasError('required')"
+                        >Username is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- First Name -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="firstName"
+                        formControlName="firstName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('firstName')?.touched &&
+                        signUpForm.get('firstName')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="
+                          signUpForm.get('firstName')?.hasError('required')
+                        "
+                        >First name is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Last Name -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="lastName"
+                        formControlName="lastName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('lastName')?.touched &&
+                        signUpForm.get('lastName')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="signUpForm.get('lastName')?.hasError('required')"
+                        >Last name is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="email"
+                        formControlName="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('email')?.touched &&
+                        signUpForm.get('email')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="signUpForm.get('email')?.hasError('required')"
+                        >Email is required.</small
+                      >
+                      <small *ngIf="signUpForm.get('email')?.hasError('email')"
+                        >Invalid email format.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Date of Birth -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-calendar-alt fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="dob"
+                        formControlName="dob"
+                        type="date"
+                        class="form-control"
+                        placeholder="Enter your date of birth"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('dob')?.touched &&
+                        signUpForm.get('dob')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small *ngIf="signUpForm.get('dob')?.hasError('required')"
+                        >Date of birth is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Gender -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-venus-mars fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label">Gender</label>
+                      <div class="gender-radio-buttons">
+                        <label>
+                          <input
+                            type="radio"
+                            formControlName="gender"
+                            value="Male"
+                          />
+                          Male
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            formControlName="gender"
+                            value="Female"
+                          />
+                          Female
+                        </label>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('gender')?.touched &&
+                        signUpForm.get('gender')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="signUpForm.get('gender')?.hasError('required')"
+                        >Gender is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="password"
+                        formControlName="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('password')?.touched &&
+                        signUpForm.get('password')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="signUpForm.get('password')?.hasError('required')"
+                        >Password is required.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Confirm Password -->
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        id="confirmPassword"
+                        formControlName="confirmPassword"
+                        type="password"
+                        class="form-control"
+                        placeholder="Confirm your password"
+                      />
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('confirmPassword')?.touched &&
+                        signUpForm.get('confirmPassword')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      <small
+                        *ngIf="
+                          signUpForm
+                            .get('confirmPassword')
+                            ?.hasError('required')
+                        "
+                        >Confirm password is required.</small
+                      >
+                      <small *ngIf="signUpForm.hasError('passwordMismatch')"
+                        >Passwords must match.</small
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Add a profile picture Button -->
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <label
+                      class="btn btn-primary btn-lg btn-color"
+                      for="fuProfile"
+                    >
+                      Upload a profile picture</label
+                    >
+                    <input
+                      type="file"
+                      id="fuProfile"
+                      (change)="onFileSelected($event)"
+                      style="display: none"
+                    />
+                  </div>
+                  <div *ngIf="profilePictureUrl">
+                    <img
+                      [src]="profilePictureUrl"
+                      style="width: 100px; height: 100px"
+                    />
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button
+                      type="submit"
+                      [disabled]="signUpForm.invalid"
+                      class="btn btn-primary btn-lg"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Optional Image -->
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+                <img
+                  src="assets/signupimage.png"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

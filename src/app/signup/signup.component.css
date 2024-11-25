@@ -1,0 +1,174 @@
+/* Video Background */
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire section */
+  opacity: 0.7; /* Adjust transparency */
+  z-index: -1; /* Ensure the video stays in the background */
+}
+
+/* Ensures section contents stay on top of the video */
+section.vh-100 {
+  position: relative; /* Keeps the content on top of the video */
+  overflow: hidden; /* Prevents video from overflowing outside the section */
+}
+
+/* Card styling */
+.card {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Slight white background to improve readability */
+  border-radius: 25px;
+}
+
+/* Optional: More styling for form controls */
+.form-outline {
+  position: relative;
+}
+
+.form-control {
+  padding-left: 40px;
+}
+
+.fas {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+}
+
+.gender-radio-buttons label {
+  margin-right: 15px;
+}
+
+/* Custom button for submit */
+.submit-btn {
+  background-color: #ff7f00;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .card-body {
+    padding: 20px;
+  }
+  .col-lg-6,
+  .col-lg-12 {
+    padding: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-body {
+    padding: 15px;
+  }
+  .form-control {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  section.vh-100 {
+    padding-top: 50px; /* Provide some padding at the top */
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  /* Stack the content in a single column */
+  .row {
+    flex-direction: column;
+  }
+
+  .col-lg-6,
+  .col-xl-5,
+  .col-xl-7 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Center form elements better */
+  .form-outline input {
+    font-size: 14px;
+  }
+
+  /* Button styling for transparent background, black border, and orange hover effect */
+  .btn {
+    background-color: transparent; /* Transparent background */
+    border: 2px solid black; /* Black border */
+    color: black; /* Text color black */
+    padding: 12px 25px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  /* Change to orange background and black text when hovering */
+  .btn:hover {
+    background-color: orange; /* Orange background on hover */
+    color: black; /* Keep text black on hover */
+    border-color: orange; /* Border color changes to orange on hover */
+  }
+
+  /* For submit button */
+  .btn.btn-lg {
+    padding: 15px 30px; /* Larger padding for the large button */
+  }
+
+  /* For disabled button state */
+  .btn:disabled {
+    background-color: #ccc; /* Light gray background when disabled */
+    border-color: #ccc; /* Gray border when disabled */
+    color: #666; /* Gray text when disabled */
+  }
+
+  /* Hide optional image on small screens */
+  .col-xl-7 img {
+    display: none;
+  }
+
+  /* Adjust sign up header size */
+  .h1 {
+    font-size: 28px;
+  }
+
+  /* Adjust profile image size */
+  .d-flex img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .h1 {
+    font-size: 24px; /* Adjust heading size */
+  }
+
+  /* Adjust input fields */
+  .form-control {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

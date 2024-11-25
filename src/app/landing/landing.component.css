@@ -1,0 +1,111 @@
+/* Background Video Styling */
+.bg-video {
+  position: fixed; /* Use fixed positioning to keep the video in place as the user scrolls */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire screen */
+  opacity: 1;
+  z-index: -1; /* Ensure video stays behind the content */
+}
+
+/* For larger screens, show the large video */
+#bg-video-large {
+  display: block; /* Make sure the large video is visible */
+}
+
+/* Masthead Section */
+.masthead {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  width: 100%;
+  height: 100vh; /* Ensure masthead takes full screen height */
+  position: relative; /* Makes sure content appears above the video */
+  text-align: center; /* Ensure text in the center is also centered */
+  z-index: 1; /* Make sure masthead content stays above the background video */
+}
+
+/* Masthead Content */
+.masthead-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers content */
+  align-items: center; /* Horizontally centers content */
+  gap: 20px;
+  padding: 20px;
+  position: relative; /* Ensures positioning of child elements like buttons */
+}
+
+/* Headline (H1) */
+h1 {
+  font-size: 6vw;
+  font-weight: 700;
+  margin: 0;
+  max-width: 80%;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Paragraph */
+p {
+  max-width: 80%;
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap between buttons */
+  justify-content: center; /* Vertically centers the buttons */
+  align-items: center; /* Horizontally centers the buttons */
+  position: absolute;
+  top: 50%; /* Centers the buttons vertically from the middle */
+  left: 50%; /* Centers the buttons horizontally */
+  transform: translate(-50%, -50%); /* Adjusts for exact centering */
+  width: auto;
+  max-width: 80%; /* Ensures buttons do not stretch too wide */
+}
+
+/* Make buttons larger and longer */
+button {
+  padding: 15px 40px; /* Increased horizontal padding for longer buttons */
+  font-size: 1.5rem; /* Larger font size */
+  min-width: 200px; /* Ensure a minimum width for consistency */
+  background-color: transparent; /* Transparent background */
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0); /* Border color */
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+  font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  border-radius: 5px; /* Optional: add border-radius for rounded corners */
+}
+
+/* Button hover effect (black to white) */
+button:hover {
+  background-color: white; /* Button background turns white */
+  color: black; /* Text turns black */
+  border-color: black; /* Border turns black */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(220, 57, 45, 0.4); /* Add a glow effect for focus */
+}
+
+/* Responsive Media Queries for Video Swap */
+@media (max-width: 767px) {
+  /* Hide large video on small screens */
+  #bg-video-large {
+    display: none;
+  }
+
+  /* Show small video on small screens */
+  #bg-video-small {
+    display: block;
+  }
+}

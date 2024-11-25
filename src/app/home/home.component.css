@@ -1,0 +1,138 @@
+/* General styling for the post list */
+ul,
+ol {
+  list-style: none; /* Remove any list bullets or numbers */
+  padding: 0;
+  margin: 0;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.post-cards {
+  width: 100%;
+  max-width: 900px; /* Increased max width for larger cards */
+}
+
+.post-cards li {
+  margin-bottom: 2rem; /* Space between posts */
+  display: flex;
+  justify-content: center; /* Center each post card */
+}
+
+/* Styling for individual post cards */
+.post-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem; /* Increased padding for more space inside the card */
+  width: 100%;
+  max-width: 700px; /* Increased max width for each post card */
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Make the post card the reference point for the button */
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-card img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.post-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.post-card strong {
+  font-weight: bold;
+  color: #555;
+}
+
+.post-card .content-text {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Position the comments button at the bottom right of the post card */
+.comments-toggle-btn {
+  position: absolute; /* Absolutely position the button */
+  bottom: 1rem; /* Space from the bottom of the card */
+  right: 1rem; /* Space from the right side of the card */
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color for contrast */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect to make the button darker on hover */
+.comments-toggle-btn:hover {
+  background-color: #b0b0b0; /* Darker gray on hover */
+  color: #fff; /* Change text color to white on hover for better contrast */
+}
+
+.comments-toggle-btn:focus {
+  outline: none; /* Remove outline on focus for cleaner design */
+}
+
+/* Media Query for larger screens */
+@media (min-width: 992px) {
+  .post-card {
+    padding: 2.5rem; /* Increase padding even more on larger screens */
+  }
+
+  .post-card p {
+    font-size: 1.125rem;
+  }
+}
+
+.create-post-form {
+  margin-bottom: 30px;
+}
+
+.create-post-form .form-group {
+  margin-bottom: 15px;
+}
+
+.create-post-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.create-post-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3f3b3b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-post-form button:disabled {
+  background-color: #3f3b3b;
+}
+
+.create-post-form button:hover:not(:disabled) {
+  background-color: #2f3031;
+}

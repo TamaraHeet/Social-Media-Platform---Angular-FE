@@ -1,0 +1,142 @@
+<div class="post-creation">
+  <h2>Create a New Post</h2>
+  <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+    <div class="form-group">
+      <!-- Text area for post content -->
+      <textarea
+        formControlName="contentText"
+        placeholder="What's on your mind?"
+        rows="4"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <!-- File input for uploading an image -->
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        class="form-control-file"
+      />
+    </div>
+
+    <!-- Image preview (optional) -->
+    <div *ngIf="imagePreview" class="image-preview-container">
+      <img [src]="imagePreview" alt="Image preview" class="image-preview" />
+    </div>
+
+    <div class="form-group">
+      <!-- Submit button -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!createPostForm.valid"
+      >
+        Create Post
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="post-list">
+  <h2>All Posts</h2>
+
+  <div *ngIf="posts.length === 0">
+    <p>No posts available.</p>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item post-card">
+      <div class="post-details">
+        <p><strong>Username:</strong> {{ post.user.userName }}</p>
+        <p><strong>Created At:</strong> {{ post.createdAt | date }}</p>
+        <p><strong>Content:</strong> {{ post.contentText }}</p>
+      </div>
+
+      <div *ngIf="post.contentImage" class="post-image-container">
+        <img [src]="post.contentImage" alt="Post Image" class="post-image" />
+      </div>
+
+      <!-- Like count section -->
+      <div class="like-section">
+        <p><strong>Likes:</strong> {{ likeCounts[post.postId] || 0 }}</p>
+        <button
+          class="btn"
+          [ngClass]="{
+            'btn-outline-success': !likedPosts[post.postId],
+            'btn-success': likedPosts[post.postId]
+          }"
+          (click)="toggleLike(post.postId)"
+        >
+          {{ likedPosts[post.postId] ? "Unlike" : "Like" }}
+        </button>
+      </div>
+
+      <!-- Comments toggle button -->
+      <button class="btn btn-info comments-toggle-btn" (click)="x(post.postId)">
+        Comments
+      </button>
+
+      <!-- Comments Section -->
+      <div *ngIf="commentsVisible[post.postId]">
+        <ul class="comment-list">
+          <li
+            *ngFor="let comment of postComments[post.postId]"
+            class="comment-item"
+          >
+            <p>
+              <strong>{{ comment.user.userName }}:</strong>
+              {{ comment.content }}
+            </p>
+          </li>
+        </ul>
+
+        <div *ngIf="postComments[post.postId]?.length === 0">
+          <p>No comments yet.</p>
+        </div>
+
+        <div class="comment-form">
+          <form
+            [formGroup]="commentForm"
+            (ngSubmit)="createComment(post.postId)"
+          >
+            <div class="form-group">
+              <textarea
+                id="contentText"
+                formControlName="contentText"
+                rows="3"
+                class="form-control"
+                placeholder="Write a comment..."
+              ></textarea>
+              <div
+                *ngIf="
+                  commentForm.controls['contentText'].invalid &&
+                  commentForm.controls['contentText'].touched
+                "
+              >
+                <small class="text-danger">Comment content is required.</small>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-outline-primary"
+              [disabled]="commentForm.invalid"
+            >
+              Add Comment
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Delete Post -->
+      <button
+        *ngIf="post.userId === loggedInUser?.id"
+        class="btn btn-danger"
+        (click)="deletePost(post.postId)"
+      >
+        Delete Post
+      </button>
+    </li>
+  </ul>
+</div>
